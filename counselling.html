@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Choice List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 10pt;
+  font-family: verdana;
+}
+
+#customers {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  line-height: 20px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers td:nth-child(1){width:15%;}
+
+#customers td:nth-child(2){width:15%; color: darkviolet;}
+
+#customers td:nth-child(3){width:50%; color: green;}
+
+#customers td:nth-child(4){width:20%; color: crimson;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: rgba(139, 0, 0, 0.75);
+  color: white;
+}
+
+#myInput {
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+h1, h2{
+  text-align: center;
+  color: darkred;
+  font-size: 15pt;
+}
+</style>
+</head>
+<body>
+
+<h1>TNEA Counselling Choice Filling Order</h1>
+<h2 style="color: rgb(139, 102, 0); margin-top: -10px;">For and By GOWDHAM M</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Choice Order, College Code, College Name, Branch Name..." title="Type in a name">
+
+<table id="customers">
+  <tr>
+    <th>Choice Order</th>
+    <th>College Code</th>
+    <th>College Name</th>
+    <th>Branch Name</th>
+  </tr>
+  <tr>
+    <td class="serial"></td>
+    <td>1</td>
+    <td>University Departments of Anna University, Chennai - CEG Campus, Sardar Patel Road, Guindy, Chennai 600 025</td>
+    <td>Computer Science and Engineering</td>
+  </tr>
+
+  <tr>
+    <td class="serial"></td>
+    <td>1</td>
+    <td>University Departments of Anna University, Chennai - CEG Campus, Sardar Patel Road, Guindy, Chennai 600 025</td>
+    <td>Computer Science and Engineering (SS)</td>
+  </tr>
+
+  <tr>
+    <td class="serial"></td>
+    <td>1</td>
+    <td>University Departments of Anna University, Chennai - CEG Campus, Sardar Patel Road, Guindy, Chennai 600 025</td>
+    <td>Information Tech. (SS)</td>
+  </tr>
+
+  <tr>
+    <td class="serial"></td>
+    <td>1</td>
+    <td>University Departments of Anna University, Chennai - CEG Campus, Sardar Patel Road, Guindy, Chennai 600 025</td>
+    <td>Electronics and Communication Engineering</td>
+  </tr>
+
+</table>
+<script>
+  var list = document.getElementsByClassName("serial");
+  for (var i = 1; i <= list.length; i++) {  
+    list[i-1].innerHTML = i;
+}
+</script>
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("customers");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      td1 = tr[i].getElementsByTagName("td")[1];
+      td2 = tr[i].getElementsByTagName("td")[2];
+      td3 = tr[i].getElementsByTagName("td")[3];
+      if (td || td1 || td2 || td3) {
+        txtValue = td.textContent || td.innerText;
+        txtValue1 = td1.textContent || td1.innerText;
+        txtValue2 = td2.textContent || td2.innerText;
+        txtValue3 = td3.textContent || td3.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>
